@@ -1,6 +1,6 @@
 # Oficina Eletrônica
 
-Este é um projeto de uma aplicação web para gerenciamento de uma oficina de eletrônica, desenvolvido com [Next.js](https://nextjs.org), [Prisma](https://www.prisma.io/), e [MySQL](https://www.mysql.com/). O sistema permite gerenciar clientes, equipamentos, ordens de serviço e mais.
+Este é um projeto de uma aplicação web para gerenciamento de uma oficina de eletrônica, desenvolvido com [Next.js](https://nextjs.org), [Prisma](https://www.prisma.io/), e [MySQL](https://www.mysql.com/). O sistema permite gerenciar clientes, equipamentos, funcionários, ordens de serviço e mais.
 
 ---
 
@@ -8,6 +8,7 @@ Este é um projeto de uma aplicação web para gerenciamento de uma oficina de e
 
 - **Gerenciamento de Clientes**: Adicionar, atualizar, listar e remover clientes.
 - **Cadastro de Equipamentos**: Registrar e gerenciar os equipamentos dos clientes.
+- **Gerenciamento de Funcionários**: Adicionar, atualizar, listar e remover funcionários.
 - **Ordens de Serviço**: Criar, editar e monitorar o status das ordens de serviço.
 - **Relatórios**: Geração de relatórios sobre serviços e atividades.
 
@@ -67,6 +68,7 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador para acessar a 
 
 - Cliente
 - Equipamento
+- Funcionário
 - OrdemDeServico
 
 ---
@@ -117,6 +119,9 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador para acessar a 
 
 ### **Equipamento**
 - Gerenciar informações sobre os equipamentos dos clientes.
+
+### **Funcionário**
+- Adicionar, atualizar, deletar e listar funcionários.
 
 ### **Ordem de Serviço**
 - Criar, monitorar e gerenciar o status das ordens de serviço.
