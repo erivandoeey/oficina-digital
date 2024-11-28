@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id              Int              @id @default(autoincrement())
+  nome            String
+  email           String
+  telefone        String
+  equipamentos    Equipamento[]
+  ordensDeServico OrdemDeServico[]
+}
+
+model Equipamento {
+  id              Int              @id @default(autoincrement())
+  nome            String
+  marca           String
+  modelo          String
+  clienteId       Int?
+  cliente         Cliente?         @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  ordensDeServico OrdemDeServico[]
+
+  @@index([clienteId], map: "Equipamento_clienteId_fkey")
+}
+
+model OrdemDeServico {
+  id            Int         @id @default(autoincrement())
+  descricao     String
+  status        StatusOrdem
+  clienteId     Int
+  equipamentoId Int
+  funcionarioId Int
+  criadoEm      DateTime    @default(now())
+  cliente       Cliente     @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  equipamento   Equipamento @relation(fields: [equipamentoId], references: [id], onDelete: Cascade)
+  funcionario   Funcionario @relation(fields: [funcionarioId], references: [id], onDelete: Cascade)
+
+  @@index([clienteId], map: "OrdemDeServico_clienteId_fkey")
+  @@index([equipamentoId], map: "OrdemDeServico_equipamentoId_fkey")
+  @@index([funcionarioId], map: "OrdemDeServico_funcionarioId_fkey")
+}
+
+model Funcionario {
+  id              Int              @id @default(autoincrement())
+  nome            String
+  cargo           String
+  email           String           @unique
+  ordensDeServico OrdemDeServico[]
+}
+
+enum StatusOrdem {
+  PENDENTE
+  EM_PROGRESSO
+  CONCLUIDA
+  CANCELADA
+}
