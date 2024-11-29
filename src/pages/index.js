@@ -43,7 +43,7 @@ export default function Home() {
       localStorage.setItem('autenticado', 'true');
       localStorage.setItem('perfil', 'cliente');
     } else {
-      alert('Usuário ou senha incorretos. Tente novamente.');
+      alert('Login ou senha inválidos. Tente novamente.');
     }
   };
 
